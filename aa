@@ -1,0 +1,109 @@
+import numpy as np
+
+# Function to read a matrix from the user
+def read_matrix(rows, cols):
+    matrix = []
+    print(f"Enter {rows}x{cols} matrix:")
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            element = float(input(f"Enter element at row {i + 1}, column {j + 1}: "))
+            row.append(element)
+        matrix.append(row)
+    return np.array(matrix)
+
+# Function to calculate the dot product of two matrices
+def dot_product(matrix1, matrix2):
+    return np.dot(matrix1, matrix2)
+
+# Function to calculate the trace of a matrix
+def trace(matrix):
+    return np.trace(matrix)
+
+# Function to calculate the rank of a matrix
+def rank(matrix):
+    return np.linalg.matrix_rank(matrix)
+
+# Function to calculate the determinant of a matrix
+def determinant(matrix):
+    return np.linalg.det(matrix)
+
+# Function to calculate the inverse of a matrix
+def inverse(matrix):
+    try:
+        return np.linalg.inv(matrix)
+    except np.linalg.LinAlgError:
+        return None
+
+# Function to calculate eigenvalues and eigenvectors of a matrix
+def eigen(matrix):
+    eigenvalues, eigenvectors = np.linalg.eig(matrix)
+    return eigenvalues, eigenvectors
+
+# Main function
+def main():
+    rows = int(input("Enter the number of rows for both matrices: "))
+    cols = int(input("Enter the number of columns for both matrices: "))
+
+    # Read the first matrix
+    matrix1 = read_matrix(rows, cols)
+
+    # Read the second matrix
+    matrix2 = read_matrix(rows, cols)
+
+    # Perform matrix operations
+    sum_result = matrix1 + matrix2
+    product_result = dot_product(matrix1, matrix2)
+    transpose_result1 = np.transpose(matrix1)
+    transpose_result2 = np.transpose(matrix2)
+    trace_result1 = trace(matrix1)
+    trace_result2 = trace(matrix2)
+    rank_result1 = rank(matrix1)
+    rank_result2 = rank(matrix2)
+    det_result1 = determinant(matrix1)
+    det_result2 = determinant(matrix2)
+    inverse_result1 = inverse(matrix1)
+    inverse_result2 = inverse(matrix2)
+    eigenvalues1, eigenvectors1 = eigen(matrix1)
+    eigenvalues2, eigenvectors2 = eigen(matrix2)
+
+    # Display the results
+    print("\nMatrix 1:")
+    print(matrix1)
+    print("\nMatrix 2:")
+    print(matrix2)
+    print("\nSum of matrices:")
+    print(sum_result)
+    print("\nDot product of matrices:")
+    print(product_result)
+    print("\nTranspose of Matrix 1:")
+    print(transpose_result1)
+    print("\nTranspose of Matrix 2:")
+    print(transpose_result2)
+    print("\nTrace of Matrix 1:")
+    print(trace_result1)
+    print("\nTrace of Matrix 2:")
+    print(trace_result2)
+    print("\nRank of Matrix 1:")
+    print(rank_result1)
+    print("\nRank of Matrix 2:")
+    print(rank_result2)
+    print("\nDeterminant of Matrix 1:")
+    print(det_result1)
+    print("\nDeterminant of Matrix 2:")
+    print(det_result2)
+    print("\nInverse of Matrix 1:")
+    print(inverse_result1)
+    print("\nInverse of Matrix 2:")
+    print(inverse_result2)
+    print("\nEigenvalues of Matrix 1:")
+    print(eigenvalues1)
+    print("\nEigenvectors of Matrix 1:")
+    print(eigenvectors1)
+    print("\nEigenvalues of Matrix 2:")
+    print(eigenvalues2)
+    print("\nEigenvectors of Matrix 2:")
+    print(eigenvectors2)
+
+if __name__ == "__main__":
+    main()
